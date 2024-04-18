@@ -4,5 +4,3 @@
 *.log
 .DS_Store
 /.vscode/
-/src/assets/css/style.css
-/src/assets/css/input.css
