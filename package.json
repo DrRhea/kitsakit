@@ -1,0 +1,20 @@
+{
+  "name": "kitsakit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.php",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.13",
+    "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "boxicons": "^2.1.4"
+  }
+}
