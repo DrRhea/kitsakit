@@ -41,7 +41,10 @@
   function readDokter() {
     global $conn;
 
-    $query = "SELECT nama_dokter FROM dokter";
+    $query = "SELECT dokter.*, departmen.spesialisasi 
+              FROM dokter
+              INNER JOIN departmen
+              ON dokter.id_departmen = departmen.id_departmen";
 
     $result = mysqli_query($conn, $query);
 
