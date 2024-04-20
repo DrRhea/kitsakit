@@ -50,7 +50,7 @@
       <li><a href="#doctors" class="flex flex-col-reverse items-center">Doctors<i class="uil uil-user-md"></i></a></li>
 
       <li><a href="login.php" class="block w-full px-6 py-2 text-white duration-300 bg-indigo-600 rounded-lg shadow-sm shadow-indigo-600 hover:bg-indigo-500">Login</a></li>
-      <li><a href="admin.php" class="block w-full px-6 py-2 text-indigo-600 duration-300 rounded-lg shadow-md hover:ring-indigo-500 hover:text-indigo-500 ring-2 ring-indigo-600 ring-inset">Admin</a></li>
+      <li><a href="admin/dashboard.php" class="block w-full px-6 py-2 text-indigo-600 duration-300 rounded-lg shadow-md hover:ring-indigo-500 hover:text-indigo-500 ring-2 ring-indigo-600 ring-inset">Admin</a></li>
     </ul>
 
   <main class="flex flex-col items-center justify-around px-10 mt-24 md:px-16 sm:flex-row" id="home">
@@ -163,57 +163,6 @@
     <p class="py-4 text-center text-white bg-indigo-600">&copy; 2024 Arya Jagadditha. All rights reserved.</p>
   </footer>
     
-  <script>
-  document.addEventListener("scroll", function() {
-    let navbar = document.querySelector("nav");
-    if(window.scrollY > 80) {
-      navbar.style.backgroundColor = "white";
-      navbar.style.boxShadow = "rgba(149, 157, 165, 0.2) 0px 8px 24px";
-      navbar.style.position = "fixed";
-    } else {
-      navbar.style.backgroundColor = "transparent";
-      navbar.style.boxShadow = "none";
-      navbar.style.position = "";
-    }
-  });
-
-  let bar = document.querySelector(".uil-bars");
-  let close = document.querySelector(".uil-times");
-  
-  bar.addEventListener("click", () => {
-    navlist = document.querySelector("#navlist");
-    navlist.style.right = "0";
-
-    let navbar = document.querySelector("nav");
-      if(window.scrollY > 80) {
-        navbar.style.backgroundColor = "white";
-      } else {
-        navbar.style.backgroundColor = "transparent";
-        navbar.style.boxShadow = "none";
-        navbar.style.position = "";
-      }
-  })
-  
-  close.addEventListener("click", () => {
-    navlist = document.querySelector("#navlist");
-    navlist.style.right = "-100%"; 
-    navlist.style.trasition = ".3s";
-  })
-  
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute('href'));
-
-        window.scrollTo({
-            top: target.offsetTop - 100, // Sesuaikan angka -100 sesuai dengan kebutuhan Anda
-            behavior: 'smooth'
-        });
-    });
-  });
-
-
-  </script>
+  <script src="assets/js/index.js"></script>
 </body>
 </html>

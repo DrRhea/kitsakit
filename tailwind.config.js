@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     "./src/*.php",
-    // Pastikan file atau direktori yang Anda edit termasuk di sini
+    "./src/admin/*.php"
   ],
   theme: {
     extend: {},

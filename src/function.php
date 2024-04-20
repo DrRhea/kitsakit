@@ -1,5 +1,5 @@
 <?php
-  include('./config.php');
+  include('config.php');
 
   function readObat() {
     global $conn;
@@ -19,6 +19,16 @@
     ON rekam_medis.id_pasien = pasien.id_pasien
     INNER JOIN dokter
     ON rekam_medis.id_dokter = dokter.id_dokter";
+
+    $result = mysqli_query($conn, $query);
+
+    return $result;
+  }
+
+  function readPasien() {
+    global $conn;
+
+    $query = "SELECT * FROM pasien";
 
     $result = mysqli_query($conn, $query);
 
