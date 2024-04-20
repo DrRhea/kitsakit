@@ -3,7 +3,11 @@
 
   $listDokter = readDokter();
   $listObat = readObat();
+
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -31,8 +35,8 @@
       <li><a href="#doctors" class="flex flex-col-reverse items-center duration-300 hover:text-indigo-500">Doctors</a></li>
     </ul>
     <ul class="hidden gap-4 font-medium lg:flex">
-        <a href="" class="px-6 py-2 text-white duration-300 bg-indigo-600 rounded-lg shadow-sm shadow-indigo-600 hover:bg-indigo-500">Login</a>
-        <a href="" class="px-6 py-2 text-indigo-600 duration-300 rounded-lg ring-2 ring-indigo-600 ring-inset hover:ring-indigo-500 hover:text-indigo-500">Admin</a>
+        <a href="#" class="px-6 py-2 text-white duration-300 bg-indigo-600 rounded-lg shadow-sm shadow-indigo-600 hover:bg-indigo-500">Login</a>
+        <a href="admin/dashboard.php" class="px-6 py-2 text-indigo-600 duration-300 rounded-lg ring-2 ring-indigo-600 ring-inset hover:ring-indigo-500 hover:text-indigo-500">Admin</a>
     </ul>
     <i class="text-4xl cursor-pointer uil uil-bars lg:hidden"></i>
   </nav>
@@ -62,7 +66,7 @@
         <p class="mt-4 text-sm font-medium md:text-md sm:gap-3 sm:w-3/4">Become member of our hospital community? <a href="" class="text-indigo-600 text-md">Sign Up</a></p>
     </div>
     <div class="">
-      <img src="assets/img/hero-img.png" alt="" class="hidden lg:block rounded-full border-[16px] border-indigo-600">
+      <img src="assets/img/hero-img.png" alt="" class="hidden lg:block rounded-full border-[16px] border-indigo-600 w-[400px] mt-12">
     </div>
   </main>
 
@@ -192,7 +196,7 @@
   
   close.addEventListener("click", () => {
     navlist = document.querySelector("#navlist");
-    navlist.style.right = "-100%";
+    navlist.style.right = "-100%"; 
     navlist.style.trasition = ".3s";
   })
   
