@@ -11,13 +11,13 @@
         echo "
         <script>
             alert('Data Berhasil Ditambahkan');
-            
+            location.href = '../dokter.php';
         </script>";
     } else {
         echo "
         <script>
             alert('Gagal menambahkan Data !');
-            
+            location.href = '../dokter.php';
         </script>
         ";
     }
@@ -40,9 +40,9 @@
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
   
 </head>
-<body class="text-gray-800 font-['Poppins'] flex relative bg-gray-50 overflow-x-hidden px-4 flex flex-col gap-4">
+<body class="text-gray-800 font-['Poppins'] relative bg-gray-50 overflow-x-hidden flex flex-col gap-4">
 
-<nav class="fixed left-0 top-10 py-2 px-4 rounded-r-full w-fit font-medium bg-indigo-600 text-white">
+<nav class="fixed left-0 top-10 px-4 py-2 rounded-r-full w-fit font-medium bg-indigo-600 text-white">
   <a href="../dokter.php" class="flex items-center">
     back?
   </a>
@@ -54,38 +54,39 @@
   </h1>
 </header>
 
-<main class="mt-4 font-medium">
-  <form action="" method="POST" class="flex flex-col gap-4" enctype="multipart/form-data">
-    <label for="nama_dokter">Nama</label>
-    <input type="text" name="nama_dokter" id="nama_dokter" class="outline-none bg-gray-200 px-4 py-2 rounded-md" placeholder="Masukan nama anda..">
+<main class="font-medium flex flex-col md:flex-row-reverse gap-4px">
+  <img src="../../assets/img/addData.jpg" alt="" class="object-cover hidden md:block w-1/2 h-full rounded-l-lg">
+  <form action="" method="POST" class="flex items-center px-8 w-full flex-col gap-4" enctype="multipart/form-data">
+    <label for="nama_dokter" class="self-start w-full">Nama</label>
+    <input type="text" name="nama_dokter" id="nama_dokter" class="outline-none w-full bg-gray-200 px-4 py-2 rounded-md" placeholder="Masukan nama anda.." required>
 
-    <label for="no_telp_dokter">Nomor Telefon</label>
-    <input type="tel" name="no_telp_dokter" id="no_telp_dokter" pattern="08[0-9]{10,11}" class="outline-none bg-gray-200 px-4 py-2 rounded-md" placeholder="Format : 08xxxxxxxx">
+    <label for="no_telp_dokter" class="self-start w-full">Nomor Telefon</label>
+    <input type="tel" name="no_telp_dokter" id="no_telp_dokter" pattern="08[0-9]{10,11}" class="outline-none w-full bg-gray-200 px-4 py-2 rounded-md" placeholder="Format : 08xxxxxxxx" required>
 
-    <label for="alamat_dokter">Alamat</label>
-    <textarea name="alamat_dokter" id="alamat_dokter" rows=3" class="outline-none bg-gray-200 px-4 py-2 rounded-md" placeholder="Masukan alamat anda.."></textarea>
+    <label for="alamat_dokter" class="self-start w-full">Alamat</label>
+    <textarea name="alamat_dokter" id="alamat_dokter" rows=3" class="outline-none w-full bg-gray-200 px-4 py-2 rounded-md" placeholder="Masukan alamat anda.."></textarea required>
 
-    <label for="jenis_kelamin_dokter">Jenis Kelamin</label>
-    <select name="jenis_kelamin_dokter" id="jenis_kelamin_dokter" class="outline-none bg-gray-200 px-4 py-2 rounded-md" placeholder="Pilih">
+    <label for="jenis_kelamin_dokter" class="self-start w-full">Jenis Kelamin</label>
+    <select name="jenis_kelamin_dokter" id="jenis_kelamin_dokter" class="outline-none w-full bg-gray-200 px-4 py-2 rounded-md" placeholder="Pilih" required>
       <option selected hidden>Pilih</option>
       <option value="L">Laki - Laki</option>
       <option value="P">Perempuan</option>
     </select>
 
-    <label for="departmen">Departmen</label>
-    <select name="departmen" id="departmen" class="outline-none bg-gray-200 px-4 py-2 rounded-md">
+    <label for="departmen" class="self-start w-full">Departmen</label>
+    <select name="departmen" id="departmen" class="outline-none w-full bg-gray-200 px-4 py-2 rounded-md" required>
       <option selected hidden>Pilih</option>
       <?php foreach($listDepartmen as $departmen): ?>
         <option value="<?= $departmen['id_departmen'] ?>" ><?= $departmen['nama_departmen'] ?></option>
       <?php endforeach;?>
     </select>
 
-    <label for="foto_dokter">Foto</label>
-    <input type="file" name="foto_dokter" id="foto_dokter" class="outline-none bg-gray-200 px-4 py-2 rounded-md">
+    <label for="foto_dokter" class="self-start w-full">Foto</label>
+    <input type="file" name="foto_dokter" id="foto_dokter" class="outline-none w-full bg-gray-200 px-4 py-2 rounded-md" required>
 
-    <div class="flex justify-center gap-4">
-      <button type="submit w-fit px-4 py-2 bg-indigo-600" name="submit">submit</button>
-      <button type="reset">reset</button>
+    <div class="flex justify-center gap-8">
+      <button type="submit" class="w-fit px-4 py-2 bg-indigo-600 text-white rounded-lg" name="submit">submit</button>
+      <button type="reset" class="text-red-600 border-red-600">reset</button>
     </div>
   </form>
 </main>

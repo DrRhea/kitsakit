@@ -4,7 +4,6 @@
   "description": "",
   "main": "src/index.php",
   "scripts": {
-    // "dev-1": "npx tailwindcss -i ./src/admin/assets/input.css -o ./src/admin/assets/style.css --watch",
     "dev": "npx tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/style.css --watch"
   },
   "keywords": [],

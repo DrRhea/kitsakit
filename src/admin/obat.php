@@ -11,10 +11,9 @@
 <div class="flex flex-col gap-2 xl:flex-row" id="obat">
   <div class="flex flex-row items-center justify-between min-[1281px]:justify-start min-[1281px]:flex-col gap-4 px-8 mt-4" id="header"> 
       <h1 class="text-2xl font-bold text-center">
-        <span class="text-gray-700">Rekam</span>
-        <span class="text-indigo-600">Medis</span>
+        <span class="text-indigo-600">Obat</span>
       </h1>
-      <a href="" class="flex self-center gap-2 px-4 py-2 text-white duration-300 bg-indigo-600 rounded-full hover:bg-indigo-500 w-fit">Tambah<i class="uil uil-plus"></i></a>
+      <a href="./addData/addObat.php" class="flex self-center gap-2 px-4 py-2 text-white duration-300 bg-indigo-600 rounded-full hover:bg-indigo-500 w-fit">Tambah<i class="uil uil-plus"></i></a>
   </div>
   <div class="w-full overflow-x-auto">
   <table class="w-full text-center table-auto">
@@ -42,8 +41,8 @@
           <td class="px-4 py-2 border"><?= $obat['deskripsi'] ?></td>
           <td class="px-4 py-2 border">Rp<?= number_format($obat['harga'],0,"",".") ?></td>
           <td class="px-4 py-2 border"><?= $obat['stok'] ?></td>
-          <td class="px-4 py-2 border"><i class="uil uil-edit-alt"></i></td>
-          <td class="px-4 py-2 border"><i class="uil uil-trash"></i></td>
+          <td class="px-4 py-2 border"><a href="updateData/updateObat.php?id_obat=<?=$obat['id_obat']?>"><i class="uil uil-edit-alt text-xl text-indigo-600 hover:text-indigo-500 duration-300"></i></a></td>
+          <td class="px-4 py-2 border"><a href="deleteData/delete.php?id=<?=$obat['id_obat']?>"><i class="uil uil-trash text-xl text-red-600 hover:text-red-500 duration-300"></a></i></td>
         </tr>
       <?php $counter++; ?>
       <?php endforeach;?>

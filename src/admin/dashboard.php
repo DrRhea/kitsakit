@@ -122,7 +122,7 @@
               <?php $counter++; ?>
             <?php endforeach; ?>
           </table>
-          <a href="" class="flex items-end self-end h-full mt-4 font-medium text-gray-500 duration-300 hover:text-gray-400 w-fit">See More</a>
+          <a href="dokter.php" class="flex items-end self-end h-full mt-4 font-medium text-gray-500 duration-300 hover:text-gray-400 w-fit">See More</a>
       </div>
 
       <!-- Pasien -->
@@ -146,7 +146,7 @@
               <?php $counter++; ?>
             <?php endforeach; ?>
           </table>
-          <a href="" class="flex items-end self-end h-full mt-4 font-medium text-gray-500 duration-300 hover:text-gray-400 w-fit">See More</a>
+          <a href="#" class="flex items-end self-end h-full mt-4 font-medium text-gray-500 duration-300 hover:text-gray-400 w-fit">See More</a>
       </div>
       
       <!-- Obat -->
@@ -170,7 +170,7 @@
               <?php $counter++; ?>
             <?php endforeach; ?>
           </table>
-          <a href="" class="flex items-end self-end h-full mt-4 font-medium text-gray-500 duration-300 hover:text-gray-400 w-fit">See More</a>
+          <a href="obat.php" class="flex items-end self-end h-full mt-4 font-medium text-gray-500 duration-300 hover:text-gray-400 w-fit">See More</a>
       </div>
     </div>
   </main>

@@ -35,8 +35,8 @@
           <td class="px-4 py-2 border"><img src="../assets/img/doctors/<?= $dokter['foto'] ?>" alt="" class="mx-auto h-[50px] object-cover bg-indigo-600 w-[50px] rounded-full"></td>
           <td class="px-4 py-2 border"><?= $dokter['nama_dokter'] ?></td>
           <td class="px-4 py-2 border"><?= $dokter['spesialisasi'] ?></td>
-          <td class="px-4 py-2 border"><i class="uil uil-edit-alt"></i></td>
-          <td class="px-4 py-2 border"><a href="deleteData/delete.php?id=<?=$dokter['id_dokter']?>"><i class="uil uil-trash"></a></i></td>
+          <td class="px-4 py-2 border"><a href="updateData/updateDokter.php?id_dokter=<?=$dokter['id_dokter']?>"><i class="uil uil-edit-alt text-xl text-indigo-600 hover:text-indigo-500 duration-300"></i></a></td>
+          <td class="px-4 py-2 border"><a href="deleteData/delete.php?id=<?=$dokter['id_dokter']?>"><i class="uil uil-trash text-xl text-red-600 hover:text-red-500 duration-300"></a></i></td>
         </tr>
       <?php $counter++; ?>
       <?php endforeach;?>

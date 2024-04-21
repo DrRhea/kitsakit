@@ -137,7 +137,7 @@
       <div class="p-6 rounded-lg shadow-lg">
         <div class="relative flex justify-center">
           <div class="absolute bottom-0 left-0 w-full bg-indigo-600 rounded-md h-2/3"></div>
-          <img src="assets/img/doctors/<?= $dokter['foto'] ?>" alt="" class="relative h-[200px] w-[200px] object-cover">
+          <img src="assets/img/doctors/<?= $dokter['foto'] ?>" alt="" class="relative h-[200px] w-[200px] drop-shadow-lg object-cover">
         </div>
         <div class="flex flex-col items-center gap-1 mt-4 font-medium">
           <span class="text-xl">Dr. <?= $dokter['nama_dokter'] ?></span>
