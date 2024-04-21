@@ -1,5 +1,6 @@
 <?php
   include('./lib/header.php');
+  include('./lib/nav.php');
   include('../function.php');
 
   $listRekamMedis = readRekamMedis();
@@ -7,45 +8,14 @@
   $listPasien = readPasien();
   $listObat = readObat();
 ?>
-  <nav class="fixed top-0 left-0 flex flex-col justify-between h-full px-8 py-8 font-medium duration-300 bg-white border shadow-md md:pl-8 md:pr-16">
-    <i class="self-end mb-5 text-2xl cursor-pointer lg:hidden uil uil-times" id="close"></i>
-    <h1 class="flex text-4xl font-bold">
-      <span class="text-indigo-600">Kit</span>
-      <span>Sakit</span>
-    </h1>
-    <div class="flex-1 mt-8 text-lg">
-      <ul class="flex flex-col gap-6">
-        <li>
-          <a href="" class="flex gap-2 text-indigo-600"><i class="uil uil-estate"></i></i>Dashboard</a>
-        </li>
-        <li>
-          <a href="" class="flex gap-2 duration-500 hover:decoration-2 hover:underline hover:decoration-indigo-600 hover:text-indigo-600"><i class="uil uil-file-medical"></i>Rekam Medis</a>
-        </li>
-        <li>
-          <a href="" class="flex gap-2 duration-500 hover:decoration-2 hover:underline hover:decoration-indigo-600 hover:text-indigo-600"><i class="uil uil-capsule"></i>Obat</a>
-        </li>
-        <li>
-          <a href="" class="flex gap-2 duration-500 hover:decoration-2 hover:underline hover:decoration-indigo-600 hover:text-indigo-600"><i class="uil uil-user-md"></i>Dokter</a>
-        </li>
-        <li>
-          <a href="" class="flex gap-2 duration-500 hover:decoration-2 hover:underline hover:decoration-indigo-600 hover:text-indigo-600"><i class="uil uil-user"></i>Profile</a>
-        </li>
-      </ul>
-    </div>
-    <a href="../index.php" class="flex self-center gap-2 text-lg">Logout<i class="uil uil-sign-out-alt"></i></a>
-  </nav>
-
-  <div class="w-[50px] h-[50px] bg-indigo-600 flex text-white fixed duration-300 items-center justify-center text-2xl rounded-r-full top-10 l-[-100%] cursor-pointer" id="open">
-    <i class="uil uil-angle-right-b"></i>
-  </div>
   
-  <main class="flex flex-col w-full gap-8 my-8 mr-12 ml-72">
-    <div class="flex items-center justify-between px-8" id="header">
-      <h2 class="text-2xl font-bold">
+  <main class="flex flex-col w-full gap-8 my-8 ml-4 mr-4 lg:ml-72">
+    <div class="flex flex-col items-center self-center justify-center gap-4 px-8 lg:flex-row lg:justify-between w-fit lg:w-full" id="header"> 
+      <h1 class="text-2xl font-bold">
         <span class="text-gray-700">Welcome, </span>
         <span class="text-indigo-600">Dr. You</span>
-      </h2>
-      <div class="flex gap-4 p-2 rounded-full shadow-sm">
+      </h1>
+      <div class="flex flex-col-reverse items-center gap-4 p-2 rounded-full shadow-sm lg:flex-row">
         <form action="" class="flex items-center gap-2 px-4 font-medium bg-gray-200 rounded-full">
           <button>
             <i class="text-lg text-indigo-600 uil uil-search"></i>
@@ -57,18 +27,18 @@
           <i class="cursor-pointer uil uil-moon"></i>
           <i class="cursor-pointer uil uil-info-circle"></i>
         </div>
-        <img src="../assets/img/doctors/doctors-1.png" alt="" class="rounded-full w-[40px] h-[40px] object-cover bg-indigo-600">
+        <img src="../assets/img/doctors/doctors-1.png" alt="" class="rounded-full lg:w-[40px] lg:h-[40px] w-[100px] h-[100px] object-cover bg-indigo-600 ">
       </div>
     </div>
-    <div class="flex gap-8">
-      <div class="flex gap-4 px-8 py-4 rounded-lg shadow-md">
+    <div class="flex flex-wrap self-center justify-center w-full gap-4 lg:justify-start lg:self-start">
+      <div class="flex w-full gap-4 px-8 py-4 rounded-lg shadow-md lg:w-fit">
         <i class="self-center text-3xl text-indigo-600 uil uil-user-check"></i>
         <div class="flex flex-col">
           <span class="text-2xl font-bold">3000</span>
           <span class="font-medium">Patients Treated</span>
         </div>
       </div>
-      <div class="flex gap-4 px-8 py-4 rounded-lg shadow-md">
+      <div class="flex w-full gap-4 px-8 py-4 rounded-lg shadow-md lg:w-fit">
         <i class="self-center text-3xl text-indigo-600 uil uil-award"></i>
         <div class="flex flex-col">
           <span class="text-2xl font-bold">Ratings</span>
@@ -84,12 +54,33 @@
       </div>
     </div>
 
-    <div class="flex flex-wrap w-full gap-8">
+    <div class="flex flex-wrap justify-center gap-8 mt-4 font-medium text-indigo-600 lg:hidden">
+      <a href="rekamMedis.php?id=0" class="grow">
+        <div class="flex flex-col items-center gap-4 p-16 duration-500 rounded-lg shadow-lg hover:text-white hover:bg-indigo-600">
+          <i class="text-4xl uil uil-file-medical"></i>
+          <p class="">Rekam Medis</p>
+        </div>
+      </a>
+      <a href="obat.php" class="grow">
+        <div class="flex flex-col items-center gap-4 p-16 duration-500 rounded-lg shadow-lg hover:text-white hover:bg-indigo-600">
+          <i class="text-4xl uil uil-tablets"></i>
+          <p class="">Obat</p>
+        </div>
+      </a>
+      <a href="dokter.php" class="grow">
+        <div class="flex flex-col items-center gap-4 p-16 duration-500 rounded-lg shadow-lg hover:text-white hover:bg-indigo-600">
+          <i class="text-4xl uil uil-user-md"></i>
+          <p class="">Dokter</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="flex-wrap hidden w-full gap-8 lg:flex">
 
     <!-- Rekam Medis -->
     <div class="flex flex-col p-8 rounded-lg shadow-md bg-gray-50 grow" id="rekam_medis">
         <h3 class="mb-4 text-2xl font-bold text-indigo-600">Rekam Medis</h3>
-          <table class="font-medium">
+          <table class="font-medium table-auto">
             <tr class="text-center text-gray-500">
               <th class="px-4 py-2 font-medium">Nama Pasien</th>
               <th class="px-4 py-2 font-medium">Nama Dokter</th>
@@ -107,7 +98,7 @@
               <?php $counter++; ?>
             <?php endforeach; ?>
           </table>
-          <a href="" class="flex items-end self-end h-full mt-4 font-medium text-gray-500 duration-300 hover:text-gray-400 w-fit">See More</a>
+          <a href="rekamMedis.php?id=0" class="flex items-end self-end h-full mt-4 font-medium text-gray-500 duration-300 hover:text-gray-400 w-fit">See More</a>
       </div>
 
       <!-- Dokter -->
@@ -184,41 +175,6 @@
     </div>
   </main>
 
-  <script>
-    let closeBtn = document.querySelector('#close')
-    let openBtn = document.querySelector('#open')
-    
-    closeBtn.addEventListener('click', () => {
-      let navbar = document.querySelector('nav')
-      let main = document.querySelector('main')
-      
-      navbar.classList.remove('left-0');
-      navbar.classList.add('left-[-100%]');
-
-      main.classList.remove('ml-72')
-      main.classList.add('ml-12')
-
-      openBtn.classList.remove('l-[-100%]');
-      openBtn.classList.add('l-[100%]');
-    })
-    
-    openBtn.addEventListener('click', () => {
-      let navbar = document.querySelector('nav')
-      let main = document.querySelector('main')
-      
-      navbar.classList.add('left-0');
-      navbar.classList.remove('left-[-100%]');
-
-      main.classList.remove('ml-12')
-      main.classList.add('ml-72')
-
-      openBtn.classList.remove('l-[100%]');
-      openBtn.classList.add('l-[-100%]');
-
-      console.log('hehe')
-    })
-
-
-  </script>
-</body>
-</html>
+  <?php
+    include('lib/footer.php')
+  ?>
