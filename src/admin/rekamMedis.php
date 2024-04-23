@@ -1,4 +1,10 @@
 <?php
+  if (!isset($_GET['id'])) {
+    // Jika tidak, arahkan pengguna ke halaman rekamMedis.php?id=0
+    header("Location: rekamMedis.php?id=0");
+    exit; // Pastikan kode di bawah tidak dieksekusi setelah pengalihan header
+  }
+  
   include('./lib/header.php');
   include('./lib/nav.php');
   include('../function.php');
@@ -14,7 +20,7 @@
         <span class="text-gray-700">Rekam</span>
         <span class="text-indigo-600">Medis</span>
       </h1>
-      <a href="" class="flex self-center gap-2 px-4 py-2 text-white duration-300 bg-indigo-600 rounded-full hover:bg-indigo-500 w-fit">Tambah<i class="uil uil-plus"></i></a>
+      <a href="addData/addRekamMedis.php" class="flex self-center gap-2 px-4 py-2 text-white duration-300 bg-indigo-600 rounded-full hover:bg-indigo-500 w-fit">Tambah<i class="uil uil-plus"></i></a>
   </div>
   <div class="w-full overflow-x-auto">
   <table class="w-full text-center table-auto">
@@ -41,9 +47,14 @@
           <td class="px-4 py-2 border"><?= $tanggalConverted = date("Y-m-d H:i:s",strtotime($rekamMedis['tanggal'])); ?></td>
           <td class="px-4 py-2 border"><?= $rekamMedis['diagnosa'] ?></td>
           <td class="px-4 py-2 border"><?= $rekamMedis['catatan'] ?></td>
-          <td class="px-4 py-2 border"><a href="?id=<?= $rekamMedis['id_rekam_medis']?>#resepObat"><i class="uil uil-prescription-bottle"></i></a></td>
-          <td class="px-4 py-2 border"><i class="uil uil-edit-alt"></i></td>
-          <td class="px-4 py-2 border"><i class="uil uil-trash"></i></td>
+          <td class="px-4 py-2 border">
+            <a href="?id=<?= $rekamMedis['id_rekam_medis']?>#resepObat">
+              <i class="uil uil-prescription-bottle text-xl text-yellow-600 duration-300 hover:text-yellow-500 <?= ($_GET['id'] == $rekamMedis['id_rekam_medis']) ? 'text-white hover:text-gray-200' : ''; ?>">
+              </i>
+            </a>
+          </td>
+          <td class="px-4 py-2 border"><a href="updateData/updateRekamMedis.php?id=<?=$rekamMedis['id_rekam_medis']?>"><i class="text-xl text-indigo-600 duration-300 uil uil-edit-alt hover:text-indigo-500 <?= ($_GET['id'] == $rekamMedis['id_rekam_medis']) ? 'text-white hover:text-gray-200' : ''; ?>"></i></a></td>
+          <td class="px-4 py-2 border"><a href="deleteData/delete.php?id=<?=$rekamMedis['id_rekam_medis']?>&page=rekamMedis"><i class="text-xl text-red-600 duration-300 uil uil-trash hover:text-red-500  <?= ($_GET['id'] == $rekamMedis['id_rekam_medis']) ? 'text-white hover:text-gray-200' : ''; ?>"></a></i></td>
         </tr>
       <?php $counter++; ?>
       <?php endforeach;?>
@@ -60,8 +71,10 @@
           <span class="text-gray-700">Resep</span>
           <span class="text-indigo-600">Obat</span>
         </h1>
-        <a href="" class="flex self-center gap-2 px-4 py-2 text-white duration-300 bg-indigo-600 rounded-full hover:bg-indigo-500 w-fit">Tambah<i class="uil uil-plus"></i></a>
-    </div>
+        <?php if($_GET['id'] != 0): ?>
+        <a href="addData/addResepObat.php?id=<?= $_GET['id'] ?>" class="flex self-center gap-2 px-4 py-2 text-white duration-300 bg-indigo-600 rounded-full hover:bg-indigo-500 w-fit">Tambah<i class="uil uil-plus"></i></a>
+        <?php endif; ?>
+      </div>
   <?php if($_GET['id'] != 0): ?>
   <div class="w-full overflow-x-auto">
   <table class="w-full text-center table-auto">
@@ -89,8 +102,8 @@
           <td class="px-4 py-2 border">Rp<?=number_format($resepObat['harga'],0,"",".")?></td>
           <td class="px-4 py-2 border">Rp<?=number_format($resepObat['harga'] * $resepObat['jumlah'],0,"",".")?></td>
           <td class="px-4 py-2 border"><a href="?id=0#rekamMedis"><i class="uil uil-step-backward-alt"></i></a></td>
-          <td class="px-4 py-2 border"><i class="uil uil-edit-alt"></i></td>
-          <td class="px-4 py-2 border"><i class="uil uil-trash"></i></td>
+          <td class="px-4 py-2 border"><a href="updateData/updateResepObat.php?id_resep_obat=<?=$resepObat['id_resep_obat']?>&id_rekam_medis=<?= $_GET['id'] ?>"><i class="text-xl text-indigo-600 duration-300 uil uil-edit-alt hover:text-indigo-500"></i></a></td>
+          <td class="px-4 py-2 border"><a href="deleteData/delete.php?id=<?=$resepObat['id_resep_obat']?>&page=resepObat&idRekamMedis=<?= $_GET['id'] ?>"><i class="text-xl text-red-600 duration-300 uil uil-trash hover:text-red-500"></a></i></td>
         </tr>
       <?php $counter++; $totalHarga += $resepObat['harga'] * $resepObat['jumlah'];?>
       <?php endforeach;?>

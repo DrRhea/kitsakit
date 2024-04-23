@@ -10,8 +10,45 @@
     return $result;
   }
 
-  function addObat() {
+  function addObat($data, $file) {
+    global $conn;
+
+
+    $namaFoto = $file['foto_obat']['name'];
+    $tempNamaFoto = $file['foto_obat']['tmp_name'];
+    $direktori = 'assets/img/obat/'.$namaFoto;
+    $isMoved = move_uploaded_file($tempNamaFoto, $direktori);
+    if(!$isMoved){
+        $namaFoto = 'default.jpg';
+    }
+
+
+    $namaObat = $data['nama_obat'];
+    $deskripsi = $data['deskripsi'];
+    $harga = $data['harga'];
+    $stok = $data['stok'];
     
+
+
+    $query = "INSERT INTO obat VALUES('', '$namaObat', '$deskripsi', '$harga', '$stok', '$namaFoto')";
+    $result = mysqli_query($conn, $query);
+  
+
+    $isSucceed = mysqli_affected_rows($conn);
+
+
+    return $isSucceed;
+  }
+
+  function deleteObat($id) {
+    global $conn;
+
+    $query = "DELETE FROM obat WHERE id_obat=$id";
+    $result = mysqli_query($conn, $query);
+
+    $isSucceed = mysqli_affected_rows($conn);
+
+    return $isSucceed;
   }
 
   function readRekamMedis() {
@@ -27,6 +64,60 @@
     $result = mysqli_query($conn, $query);
 
     return $result;
+  }
+
+  function addRekamMedis($data){
+    global $conn;
+
+    // Mendapatkan data lain dari $data
+    $idPasien = $data['id_pasien'];
+    $idDokter = $data['id_dokter'];
+    $diagnosa = $data['diagnosa'];
+    $tanggal = $data['tanggal'];
+    $catatan = $data['catatan'];
+
+    // Query untuk menambah data rekamMedis ke database
+    $query = "INSERT INTO rekam_medis VALUES('', '$tanggal', '$diagnosa', '$catatan', '$idDokter', '$idPasien')";
+    $result = mysqli_query($conn, $query);
+
+    $isSucceed = mysqli_affected_rows($conn);
+
+    return $isSucceed;
+  }
+
+  function updateRekamMedis($data){
+    global $conn;
+
+    $id = $data['id'];
+    $idPasien = $data['id_pasien'];
+    $idDokter = $data['id_dokter'];
+    $diagnosa = $data['diagnosa'];
+    $tanggal = $data['tanggal'];
+    $catatan = $data['catatan'];
+
+    $query = "UPDATE rekam_medis SET 
+              tanggal = '$tanggal',
+              diagnosa = '$diagnosa',
+              catatan = '$catatan',
+              id_dokter = '$idDokter',
+              id_pasien = '$idPasien' 
+              WHERE id_rekam_medis = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    $isSucceed = mysqli_affected_rows($conn);
+
+    return $isSucceed;
+  }
+
+  function deleteRekamMedis($id) {
+    global $conn;
+
+    $query = "DELETE FROM rekam_medis WHERE id_rekam_medis=$id";
+    $result = mysqli_query($conn, $query);
+
+    $isSucceed = mysqli_affected_rows($conn);
+
+    return $isSucceed;
   }
 
   function readPasien() {
@@ -51,6 +142,52 @@
     $result = mysqli_query($conn, $query);
 
     return $result;
+  }
+
+  function addResepObat($data, $idRekamMedis) {
+    global $conn;
+
+    $idObat = $data['id_obat'];
+    $jumlah = $data['jumlah'];
+    $instruksi = $data['instruksi'];
+
+    $query = "INSERT INTO resep_obat VALUES('', '$jumlah', '$instruksi', '$idRekamMedis', '$idObat')";
+    $result = mysqli_query($conn, $query);
+
+    $isSucceed = mysqli_affected_rows($conn);
+
+    return $isSucceed;
+  }
+
+  function updateResepObat($data) {
+    global $conn;
+
+    $id = $data['id'];
+    $idObat = $data['id_obat'];
+    $jumlah = $data['jumlah'];
+    $instruksi = $data['instruksi'];
+
+    $query = "UPDATE resep_obat SET 
+              jumlah = '$jumlah',
+              instruksi = '$instruksi',
+              id_obat = '$idObat'
+              WHERE id_resep_obat = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    $isSucceed = mysqli_affected_rows($conn);
+
+    return $isSucceed;
+  }
+
+  function deleteResepObat($id) {
+    global $conn;
+
+    $query = "DELETE FROM resep_obat WHERE id_resep_obat=$id";
+    $result = mysqli_query($conn, $query);
+
+    $isSucceed = mysqli_affected_rows($conn);
+
+    return $isSucceed;
   }
 
   function readDepartmen() {

@@ -1,21 +1,24 @@
 <?php
   include('../../function.php');
 
+  $listObat = readObat();
+  
   if (isset($_POST['submit'])) {
     // jalankan query tambah record baru
-    $isAddSucceed = addObat($_POST, $_FILES);
+    $isAddSucceed = addResepObat($_POST, $_GET['id']);
     if ($isAddSucceed > 0) {
         // jika penambahan sukses, tampilkan alert
+        $id = $_GET['id'];
         echo "
         <script>
             alert('Data Berhasil Ditambahkan');
-            location.href = '../obat.php';
+            location.href = '../rekamMedis.php?id=$id';
         </script>";
     } else {
         echo "
         <script>
             alert('Gagal menambahkan Data !');
-            location.href = '../obat.php';
+            location.href = '../rekamMedis.php?id=$id';
         </script>
         ";
     }
@@ -28,7 +31,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tambah Data Dokter</title>
+  <title>Tambah Data Rekam Medis</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="../../assets/css/style.css">
@@ -41,35 +44,35 @@
 <body class="text-gray-800 font-['Poppins'] relative bg-gray-50 overflow-x-hidden flex flex-col gap-4">
 
 <nav class="fixed left-0 px-4 py-2 font-medium text-white bg-indigo-600 rounded-r-full top-10 w-fit">
-  <a href="../obat.php" class="flex items-center">
+  <a href="../rekamMedis.php?id=0" class="flex items-center">
     back?
   </a>
 </nav>
 
 <header class="flex justify-center mt-8 mb-4">
   <h1 class="text-2xl font-bold text-indigo-600">
-    Tambah Data Obat
+    Tambah Data Resep Obat
   </h1>
 </header>
 
 <main class="flex flex-col font-medium md:flex-row-reverse gap-4px">
   <img src="../../assets/img/addObat.jpg" alt="" class="hidden object-cover w-1/2 h-full rounded-l-lg md:block">
   <form action="" method="POST" class="flex flex-col items-center w-full gap-4 px-8" enctype="multipart/form-data">
+    
+    <label for="id_obat" class="self-start w-full">Obat</label>
+    <select name="id_obat" id="id_obat" class="w-full px-4 py-2 bg-gray-200 rounded-md outline-none" required>
+      <option selected hidden>Pilih</option>
+      <?php foreach($listObat as $obat): ?>
+        <option value="<?= $obat['id_obat'] ?>" ><?= $obat['nama_obat'] ?></option>
+      <?php endforeach;?>
+    </select>
 
-    <label for="nama_obat" class="self-start w-full">Nama</label>
-    <input type="text" name="nama_obat" id="nama_obat" class="w-full px-4 py-2 bg-gray-200 rounded-md outline-none" placeholder="Masukan nama obat.." required>
+    <label for="jumlah" class="self-start w-full">Jumlah</label>
+    <input type="number" name="jumlah" id="jumlah" class="w-full px-4 py-2 bg-gray-200 rounded-md outline-none" placeholder="Cantumkan jumlah.." min="0" required>
 
-    <label for="deskripsi" class="self-start w-full">Deskripsi</label>
-    <textarea name="deskripsi" id="deskripsi" rows=3" class="w-full px-4 py-2 bg-gray-200 rounded-md outline-none" placeholder="Tulis Deskripsi.."></textarea required>
+    <label for="instruksi" class="self-start w-full">instruksi</label>
+    <textarea name="instruksi" id="instruksi" rows=3" class="w-full px-4 py-2 bg-gray-200 rounded-md outline-none" placeholder="Tulis instruksi.."></textarea required>
 
-    <label for="harga" class="self-start w-full">Harga</label>
-    <input type="text" name="harga" id="harga" class="w-full px-4 py-2 bg-gray-200 rounded-md outline-none" placeholder="Masukkan harga dalam Rupiah.." pattern="[0-9]+" title="Harga harus berupa angka" required>
-
-    <label for="stok" class="self-start w-full">Stok</label>
-    <input type="number" name="stok" id="stok" class="w-full px-4 py-2 bg-gray-200 rounded-md outline-none" placeholder="Masukkan jumlah stok.." required>
-
-    <label for="foto_obat" class="self-start w-full">Foto</label>
-    <input type="file" name="foto_obat" id="foto_obat" class="w-full px-4 py-2 bg-gray-200 rounded-md outline-none" required>
 
     <div class="flex justify-center gap-8">
       <button type="submit" class="px-4 py-2 text-white bg-indigo-600 rounded-lg w-fit" name="submit">submit</button>
