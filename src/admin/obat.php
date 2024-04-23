@@ -41,8 +41,8 @@
           <td class="px-4 py-2 border"><?= $obat['deskripsi'] ?></td>
           <td class="px-4 py-2 border">Rp<?= number_format($obat['harga'],0,"",".") ?></td>
           <td class="px-4 py-2 border"><?= $obat['stok'] ?></td>
-          <td class="px-4 py-2 border"><a href="updateData/updateObat.php?id_obat=<?=$obat['id_obat']?>"><i class="uil uil-edit-alt text-xl text-indigo-600 hover:text-indigo-500 duration-300"></i></a></td>
-          <td class="px-4 py-2 border"><a href="deleteData/delete.php?id=<?=$obat['id_obat']?>"><i class="uil uil-trash text-xl text-red-600 hover:text-red-500 duration-300"></a></i></td>
+          <td class="px-4 py-2 border"><a href="updateData/updateObat.php?id_obat=<?=$obat['id_obat']?>"><i class="text-xl text-indigo-600 duration-300 uil uil-edit-alt hover:text-indigo-500"></i></a></td>
+          <td class="px-4 py-2 border"><a href="deleteData/delete.php?id=<?=$obat['id_obat']?>&page=obat"><i class="text-xl text-red-600 duration-300 uil uil-trash hover:text-red-500"></a></i></td>
         </tr>
       <?php $counter++; ?>
       <?php endforeach;?>

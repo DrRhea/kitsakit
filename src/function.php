@@ -16,29 +16,53 @@
 
     $namaFoto = $file['foto_obat']['name'];
     $tempNamaFoto = $file['foto_obat']['tmp_name'];
-    $direktori = 'assets/img/obat/'.$namaFoto;
+    $direktori = '../../assets/img/obat/'.$namaFoto;
     $isMoved = move_uploaded_file($tempNamaFoto, $direktori);
     if(!$isMoved){
         $namaFoto = 'default.jpg';
     }
 
-
     $namaObat = $data['nama_obat'];
     $deskripsi = $data['deskripsi'];
     $harga = $data['harga'];
     $stok = $data['stok'];
-    
-
 
     $query = "INSERT INTO obat VALUES('', '$namaObat', '$deskripsi', '$harga', '$stok', '$namaFoto')";
     $result = mysqli_query($conn, $query);
   
-
     $isSucceed = mysqli_affected_rows($conn);
-
 
     return $isSucceed;
   }
+
+  function updateObat($data, $file){
+    global $conn;
+
+
+    $id = $data['id'];
+    $namaObat = $data['nama_obat'];
+    $deskripsi = $data['deskripsi'];
+    $harga = $data['harga'];
+    $stok = $data['stok'];
+    $namaFoto = $file['foto_obat']['name'];
+
+
+    if($namaFoto != ""){
+        $tempNamaFoto = $file['foto_obat']['tmp_name'];
+        $direktori = '../../assets/img/obat/'.$namaFoto;
+        move_uploaded_file($tempNamaFoto, $direktori);
+
+        $query = "UPDATE obat SET nama_obat = '$namaObat', deskripsi = '$deskripsi', harga = '$harga', stok = '$stok', foto='$namaFoto' WHERE id_obat = '$id'";
+        $result = mysqli_query($conn, $query);
+    } else{
+        $query = "UPDATE obat SET nama_obat = '$namaObat', deskripsi = '$deskripsi', harga = '$harga', stok = '$stok' WHERE id_obat = '$id'";
+        $result = mysqli_query($conn, $query);
+    }
+
+    $isSucceed = mysqli_affected_rows($conn);
+    return $isSucceed;
+  }
+
 
   function deleteObat($id) {
     global $conn;

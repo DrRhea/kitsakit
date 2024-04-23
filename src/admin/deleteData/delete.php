@@ -15,7 +15,7 @@
         else if($page == "resepObat.php")
             $isDeleteSucceed = deleteResepObat($id);
         else if($page == "obat.php")
-        $isDeleteSucceed = deleteObat($id);
+            $isDeleteSucceed = deleteObat($id);
     
         if($page == "resepObat.php")
             $page = "rekamMedis.php?id=" . $idRekamMedis . "#resepObat";
