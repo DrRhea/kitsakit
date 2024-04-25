@@ -72,7 +72,7 @@
     <div class="w-auto p-6 rounded-[24px] shadow-md shadow-gray-300 flex gap-4 flex-col">
       <span class="">Find a doctor</span>
       <form class="flex flex-col items-center gap-4 sm:flex-row">
-        <input class="w-full px-10 py-4 text-center duration-300 bg-gray-200 rounded-md hover:bg-gray-100 outline-indigo-700" type="text" name="" id="" placeholder="Name of Doctor">
+          <label for=""></label><input class="w-full px-10 py-4 text-center duration-300 bg-gray-200 rounded-md hover:bg-gray-100 outline-indigo-700" type="text" name="" id="" placeholder="Name of Doctor">
         <input class="w-full px-10 py-4 text-center duration-300 bg-gray-200 rounded-md hover:bg-gray-100 outline-indigo-700" type="text" name="" id="" placeholder="Speciality">
         <button type="submit" class="w-full">
           <a href="" class="flex justify-center w-full gap-3 px-6 py-4 text-white duration-300 bg-indigo-600 rounded-lg shadow-sm shadow-indigo-600 hover:bg-indigo-500">Search
